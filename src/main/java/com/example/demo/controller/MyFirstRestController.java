@@ -15,7 +15,7 @@ public class MyFirstRestController {
     @GetMapping("/say-hello")
     public String hello() {
         // TODO: explain logger lever
-        log.info("hello method was called...");
+        log.info("hello method was called.");
 
         return "Welcome to Spring class!!!";
     }
