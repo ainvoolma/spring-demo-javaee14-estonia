@@ -4,6 +4,7 @@ import com.example.demo.service.GreetingService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -37,9 +38,9 @@ public class MyFirstRestController {
     // /greeting?name=Ain&surmname=Voolma
 
     @GetMapping ("/greeting")
-    public String greetUser (String  name, String surname) {
-        log.info("greetUser called with params: name: [{}], surname [{}]", name, surname);
+    public String greetUser (@RequestParam(value = "name", defaultValue = "defAin") String firstname, @RequestParam (value = "surname", defaultValue = "defVoolma") String surname) {
+        log.info("greetUser called with params: name: [{}], surname [{}]", firstname, surname);
 
-        return greetingService.makeSomeGreetingToUser(name + " " + surname);
+        return greetingService.makeSomeGreetingToUser(firstname + " " + surname);
     }
 }
